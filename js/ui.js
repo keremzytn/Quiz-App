@@ -1,6 +1,8 @@
 function UI(){
     this.quiz_box = document.querySelector("#quiz-box");
     this.body = document.querySelector("#quiz-box #body");
+    this.correctIcon = "<i class='bi bi-check-circle'></i>";
+    this.inCorrectIcon = "<i class='bi bi-x-circle'></i>";
 }
 
 UI.prototype.soruGoster = function(soru){
@@ -19,6 +21,7 @@ UI.prototype.soruGoster = function(soru){
     for(let [key, value] of Object.entries(soru.cevapSecenekleri)){
         const option = document.createElement("div");
         option.classList.add("option");
+        option.addEventListener("click", optionSelected); 
 
         const span = document.createElement("span");
         span.textContent = key + ") " + value;
@@ -31,4 +34,12 @@ UI.prototype.soruGoster = function(soru){
     cardBody.appendChild(optionList);
 
     this.body.appendChild(cardBody);
+}
+
+UI.prototype.disableAllOptions = function(){
+    const options = this.body.querySelectorAll(".option");
+    for(let option of options){
+        option.classList.add("disabled");
+        option.style.pointerEvents = "none";
+    }
 }
