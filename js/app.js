@@ -6,10 +6,11 @@ const soruListesi = [
 ];
 
 const quiz = new Quiz(soruListesi);
+const ui = new UI();
 
 document.getElementById("btnSoruGetir").addEventListener("click", function() {
     if(quiz.sorular.length != quiz.soruIndex) {
-        console.log(quiz.soruGetir());
+        ui.soruGoster(quiz.soruGetir());
         quiz.soruIndex += 1;
 
         console.log(quiz);
