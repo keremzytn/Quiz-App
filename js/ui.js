@@ -1,13 +1,14 @@
-function UI(){
+function UI() {
     this.quiz_box = document.querySelector("#quiz-box");
     this.body = document.querySelector("#quiz-box #body");
-    this.correctIcon = "<i class='bi bi-check-circle'></i>";
-    this.inCorrectIcon = "<i class='bi bi-x-circle'></i>";
+    this.correctIcon = '<i class="bi bi-check-circle"></i>';
+    this.inCorrectIcon = '<i class="bi bi-x-circle"></i>';
+    this.btnNext = document.querySelector(".btn-next")
 }
 
-UI.prototype.soruGoster = function(soru){
+UI.prototype.soruGoster = function(soru) {
     this.body.innerHTML = "";
-
+    
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body");
 
@@ -18,10 +19,10 @@ UI.prototype.soruGoster = function(soru){
     const optionList = document.createElement("div");
     optionList.classList.add("option-list");
 
-    for(let [key, value] of Object.entries(soru.cevapSecenekleri)){
+    for(let [key,value] of Object.entries(soru.cevapSecenekleri)) {
         const option = document.createElement("div");
         option.classList.add("option");
-        option.addEventListener("click", optionSelected); 
+        option.addEventListener("click", optionSelected);
 
         const span = document.createElement("span");
         span.textContent = key + ") " + value;
@@ -36,10 +37,14 @@ UI.prototype.soruGoster = function(soru){
     this.body.appendChild(cardBody);
 }
 
-UI.prototype.disableAllOptions = function(){
-    const options = this.body.querySelectorAll(".option");
-    for(let option of options){
+UI.prototype.disableAllOption = function() {
+    const options = document.querySelectorAll(".option");
+    for(let option of options) {
         option.classList.add("disabled");
-        option.style.pointerEvents = "none";
     }
+}
+
+UI.prototype.soruSayisiniGoster = function(soruSirasi, toplamSoru){
+    const etiket = `<span class = "badge text-bg-danger">${soruSirasi} / ${toplamSoru}</span>`;
+    document.querySelector(".question-index").innerHTML = etiket;
 }

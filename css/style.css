@@ -1,17 +1,17 @@
-.app-container{
+.app-container {
     width: 550px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   
 }
 
-.option-list{
+.option-list {
     padding: 18px 10px;
 }
 
 .option-list .option{
-    border: 1px solid #151d3b;
+    border: 1px solid #151D3B;
     border-radius: 5px;
     padding: 8px 15px;
     font-size: 16px;
@@ -24,20 +24,26 @@
 }
 
 .option-list .option:hover{
-    color: #112b2c;
-    background-color: #ffd33d;
+    color: #112B2C;
+    background: #FFD33D;
 }
 
-.option-list .option.correct{
+.option-list .option.correct {
     color: #155724;
-    background-color: #d4edda;
-}
+    background: #d4edda;
+} 
 
-.option-list .option.incorrect{
+.option-list .option.incorrect {
     color: #721c24;
-    background-color: #f8d7da;
-}
+    background: #f8d7da;
+} 
 
-.option-list .option.disabled{
+.option-list .option.disabled {
     pointer-events: none;
+} 
+
+.summary{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

@@ -7,4 +7,3 @@ function Soru(soruMetni, cevapSecenekleri, dogruCevap) {
 Soru.prototype.cevabiKontrolEt = function(cevap) {
     return cevap === this.dogruCevap;   
 };
-
