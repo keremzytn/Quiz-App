@@ -1,48 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Quiz App</title>
+    <title>QuizMaster Pro</title>
 </head>
 <body>
+    <div class="background-overlay"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
 
     <div class="app-container">
-        <div id="button-box" class="active">
-            <button class="btn btn-lg btn-warning btn-start">Start Quiz</button>
-        </div>
-        <div id="quiz-box" class="card">
-            <div id="header" class="card-header">
-                <h4 class="app-title mb-0">Quiz App</h4>
-                <div class="time">
-                    <div class="time-text">Kalan Süre</div>
-                    <div class="time-second">10</div>
+        <!-- Start Screen -->
+        <div id="button-box" class="start-screen active">
+            <div class="start-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="bi bi-lightbulb"></i>
+                    </div>
+                    <h1 class="app-title">QuizMaster Pro</h1>
+                    <p class="app-subtitle">Test your knowledge with our interactive quiz platform</p>
                 </div>
-                <div class="time-line"></div>
-            </div>
-            <div id="body">
-                
-            </div>
-            <div id="footer" class="card-footer summary">
-                <div class="question-index"></div>
-                <button class="btn-next btn btn-secondary btn-sm">
+                <div class="start-stats">
+                    <div class="stat-item">
+                        <i class="bi bi-question-circle"></i>
+                        <span>4 Questions</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="bi bi-clock"></i>
+                        <span>10s per question</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="bi bi-trophy"></i>
+                        <span>Score tracking</span>
+                    </div>
+                </div>
+                <button class="btn-start">
+                    <span>Start Quiz</span>
                     <i class="bi bi-arrow-right"></i>
                 </button>
             </div>
         </div>
-        <div id="score-box" class="card card-body">
-            <i class="bi bi-trophy"></i>
-            <div class="score-text"></div>
-            <div>
-                <button class="btn btn-primary btn-replay">Replay</button>
-                <button class="btn btn-primary btn-quit">Quit</button>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-box" class="quiz-container">
+            <div class="quiz-header">
+                <div class="header-content">
+                    <div class="quiz-brand">
+                        <i class="bi bi-lightbulb"></i>
+                        <span>QuizMaster Pro</span>
+                    </div>
+                    <div class="timer-container">
+                        <div class="timer-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="timer-content">
+                            <div class="time-text">Time Left</div>
+                            <div class="time-second">10</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="time-line"></div>
+                </div>
+            </div>
+            
+            <div id="body" class="quiz-body">
+                <!-- Quiz content will be inserted here -->
+            </div>
+            
+            <div class="quiz-footer">
+                <div class="question-progress">
+                    <div class="question-index"></div>
+                </div>
+                <button class="btn-next">
+                    <span>Next Question</span>
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Score Screen -->
+        <div id="score-box" class="score-container">
+            <div class="score-content">
+                <div class="score-icon">
+                    <i class="bi bi-trophy"></i>
+                </div>
+                <h2 class="score-title">Quiz Completed!</h2>
+                <div class="score-text"></div>
+                <div class="score-percentage"></div>
+                <div class="score-actions">
+                    <button class="btn-replay">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        <span>Try Again</span>
+                    </button>
+                    <button class="btn-quit">
+                        <i class="bi bi-house"></i>
+                        <span>Home</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-
 
     <script src="js/soru.js"></script>
     <script src="js/quiz.js"></script>
