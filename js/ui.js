@@ -1,6 +1,9 @@
 function UI() {
+    this.profileBox = document.querySelector("#profile-box");
     this.quizBox = document.querySelector("#quiz-box");
     this.buttonBox = document.querySelector("#button-box");
+    this.categoryBox = document.querySelector("#category-box");
+    this.difficultyBox = document.querySelector("#difficulty-box");
     this.scoreBox = document.querySelector("#score-box");
     this.body = document.querySelector("#quiz-box #body");
     this.correctIcon = '<i class="bi bi-check-circle"></i>';
@@ -9,9 +12,16 @@ function UI() {
     this.btnNext = document.querySelector(".btn-next");
     this.btnReplay = document.querySelector(".btn-replay");
     this.btnQuit = document.querySelector(".btn-quit");
+    this.btnBack = document.querySelector(".btn-back");
+    this.btnBackToCategory = document.querySelector(".btn-back-to-category");
+    this.btnStartQuiz = document.querySelector(".btn-start-quiz");
+    this.btnContinue = document.querySelector(".btn-continue");
+    this.btnChangeUser = document.querySelector(".btn-change-user");
+    this.usernameInput = document.querySelector("#username");
     this.timeText = document.querySelector(".time-text");
     this.timeSecond = document.querySelector(".time-second");
     this.timeLine = document.querySelector(".time-line");
+    this.selectedCategoryDisplay = document.querySelector(".selected-category");
 }
 
 UI.prototype.soruGoster = function(soru) {
@@ -79,4 +89,58 @@ UI.prototype.getPerformanceMessage = function(percentage) {
     } else {
         return "💪 Don't give up! Try again!";
     }
+}
+
+UI.prototype.showScreen = function(screenName) {
+    // Hide all screens
+    this.buttonBox.classList.remove("active");
+    this.categoryBox.classList.remove("active");
+    this.difficultyBox.classList.remove("active");
+    this.quizBox.classList.remove("active");
+    this.scoreBox.classList.remove("active");
+    this.profileBox.classList.remove("active");
+    
+    // Show the requested screen
+    switch(screenName) {
+        case "start":
+            this.buttonBox.classList.add("active");
+            break;
+        case "category":
+            this.categoryBox.classList.add("active");
+            break;
+        case "difficulty":
+            this.difficultyBox.classList.add("active");
+            break;
+        case "quiz":
+            this.quizBox.classList.add("active");
+            break;
+        case "score":
+            this.scoreBox.classList.add("active");
+            break;
+        case "profile":
+            this.profileBox.classList.add("active");
+            break;
+    }
+}
+
+UI.prototype.updateSelectedCategory = function(category, icon) {
+    const iconElement = this.selectedCategoryDisplay.querySelector('i');
+    const textElement = this.selectedCategoryDisplay.querySelector('span');
+    
+    iconElement.className = `bi ${icon}`;
+    textElement.textContent = category;
+}
+
+UI.prototype.updateDifficultyQuestionCounts = function(category) {
+    const difficultyCards = document.querySelectorAll('.difficulty-card');
+    
+    difficultyCards.forEach(card => {
+        const difficulty = card.dataset.difficulty;
+        const questionCountElement = card.querySelector('.question-count');
+        
+        if (questionBank[category] && questionBank[category][difficulty]) {
+            const count = questionBank[category][difficulty].length;
+            questionCountElement.textContent = `${count} questions`;
+        }
+    });
 }

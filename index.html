@@ -21,9 +21,63 @@
     </div>
 
     <div class="app-container">
+        <!-- User Profile Screen -->
+        <div id="profile-box" class="profile-screen active">
+            <div class="profile-content">
+                <div class="profile-header">
+                    <div class="logo-icon">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <h2>Welcome to QuizMaster Pro</h2>
+                    <p>Enter your name to get started and track your progress</p>
+                </div>
+                <div class="profile-form">
+                    <div class="input-group">
+                        <label for="username">Your Name</label>
+                        <input type="text" id="username" placeholder="Enter your name" maxlength="20">
+                    </div>
+                    <button class="btn-continue" disabled>
+                        <span>Continue</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </button>
+                    <div class="returning-user" style="display: none;">
+                        <p>Welcome back, <span class="returning-username"></span>!</p>
+                        <button class="btn-change-user">
+                            <i class="bi bi-person-plus"></i>
+                            <span>Change User</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Start Screen -->
-        <div id="button-box" class="start-screen active">
+        <div id="button-box" class="start-screen">
             <div class="start-content">
+                <div class="start-header">
+                    <button class="theme-toggle" title="Toggle dark/light mode">
+                        <i class="bi bi-moon-fill"></i>
+                    </button>
+                </div>
+                <div class="user-welcome">
+                    <div class="user-avatar">
+                        <i class="bi bi-person-circle"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="welcome-text">Welcome,</span>
+                        <span class="current-username">Player</span>
+                    </div>
+                    <div class="user-stats">
+                        <div class="stat-badge">
+                            <i class="bi bi-trophy"></i>
+                            <span class="high-score">0</span>
+                        </div>
+                        <div class="stat-badge">
+                            <i class="bi bi-clock-history"></i>
+                            <span class="games-played">0</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="logo-container">
                     <div class="logo-icon">
                         <i class="bi bi-lightbulb"></i>
@@ -33,8 +87,8 @@
                 </div>
                 <div class="start-stats">
                     <div class="stat-item">
-                        <i class="bi bi-question-circle"></i>
-                        <span>4 Questions</span>
+                        <i class="bi bi-collection"></i>
+                        <span>4 Categories</span>
                     </div>
                     <div class="stat-item">
                         <i class="bi bi-clock"></i>
@@ -46,8 +100,117 @@
                     </div>
                 </div>
                 <button class="btn-start">
-                    <span>Start Quiz</span>
+                    <span>Choose Category</span>
                     <i class="bi bi-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Selection Screen -->
+        <div id="category-box" class="category-screen">
+            <div class="category-content">
+                <div class="category-header">
+                    <button class="btn-back">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+                    <h2>Choose Your Category</h2>
+                </div>
+                <div class="category-grid">
+                    <div class="category-card" data-category="Programming">
+                        <div class="category-icon">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h3>Programming</h3>
+                        <p>Test your coding knowledge</p>
+                        <div class="category-stats">
+                            <span class="question-count">13 questions</span>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="Science">
+                        <div class="category-icon">
+                            <i class="bi bi-atom"></i>
+                        </div>
+                        <h3>Science</h3>
+                        <p>Explore scientific concepts</p>
+                        <div class="category-stats">
+                            <span class="question-count">9 questions</span>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="History">
+                        <div class="category-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <h3>History</h3>
+                        <p>Journey through time</p>
+                        <div class="category-stats">
+                            <span class="question-count">6 questions</span>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="Sports">
+                        <div class="category-icon">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h3>Sports</h3>
+                        <p>Sports and athletics</p>
+                        <div class="category-stats">
+                            <span class="question-count">6 questions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Difficulty Selection Screen -->
+        <div id="difficulty-box" class="difficulty-screen">
+            <div class="difficulty-content">
+                <div class="difficulty-header">
+                    <button class="btn-back-to-category">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
+                    <h2>Choose Difficulty</h2>
+                    <div class="selected-category">
+                        <i class="bi bi-code-slash"></i>
+                        <span>Programming</span>
+                    </div>
+                </div>
+                <div class="difficulty-options">
+                    <div class="difficulty-card" data-difficulty="Kolay">
+                        <div class="difficulty-icon">
+                            <i class="bi bi-emoji-smile"></i>
+                        </div>
+                        <h3>Easy</h3>
+                        <p>Perfect for beginners</p>
+                        <div class="difficulty-stats">
+                            <span class="question-count">5 questions</span>
+                            <span class="time-limit">15s per question</span>
+                        </div>
+                    </div>
+                    <div class="difficulty-card" data-difficulty="Orta">
+                        <div class="difficulty-icon">
+                            <i class="bi bi-emoji-neutral"></i>
+                        </div>
+                        <h3>Medium</h3>
+                        <p>Test your knowledge</p>
+                        <div class="difficulty-stats">
+                            <span class="question-count">5 questions</span>
+                            <span class="time-limit">10s per question</span>
+                        </div>
+                    </div>
+                    <div class="difficulty-card" data-difficulty="Zor">
+                        <div class="difficulty-icon">
+                            <i class="bi bi-emoji-frown"></i>
+                        </div>
+                        <h3>Hard</h3>
+                        <p>Challenge yourself</p>
+                        <div class="difficulty-stats">
+                            <span class="question-count">3 questions</span>
+                            <span class="time-limit">8s per question</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-start-quiz">
+                    <span>Start Quiz</span>
+                    <i class="bi bi-play-fill"></i>
                 </button>
             </div>
         </div>
@@ -76,6 +239,31 @@
             </div>
             
             <div id="body" class="quiz-body">
+                <!-- Lifelines Panel -->
+                <div class="lifelines-panel">
+                    <div class="lifeline-item" data-lifeline="fifty-fifty" title="Remove 2 wrong answers">
+                        <div class="lifeline-icon">
+                            <i class="bi bi-shuffle"></i>
+                        </div>
+                        <span class="lifeline-text">50/50</span>
+                        <div class="lifeline-count">1</div>
+                    </div>
+                    <div class="lifeline-item" data-lifeline="hint" title="Get a helpful hint">
+                        <div class="lifeline-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <span class="lifeline-text">Hint</span>
+                        <div class="lifeline-count">1</div>
+                    </div>
+                    <div class="lifeline-item" data-lifeline="extra-time" title="Add 10 seconds">
+                        <div class="lifeline-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <span class="lifeline-text">+Time</span>
+                        <div class="lifeline-count">1</div>
+                    </div>
+                </div>
+                
                 <!-- Quiz content will be inserted here -->
             </div>
             
